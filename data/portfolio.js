@@ -52,10 +52,10 @@ export const coreFocus = [
 
 // `lead` is shown larger as the opening line; keep `bio` paragraphs short.
 export const about = {
-  lead: "Full-stack engineer at JuumeAI, turning LLMs into features that hold up in production.",
+  lead: "I build software that’s fast, reliable, and made to scale, from LLM-powered features to GPU-accelerated code.",
   bio: [
-    "I own compliance and audit modules end to end, with Go and PostgreSQL on the back and React and Next.js on the front, and build the retrieval and evaluation systems behind our AI features.",
-    "UMD Computer Science grad (3.9 GPA, Business Analytics minor). Before JuumeAI: backend and data work at Tyloones, AiVantage, and LeoTechnosoft, breathing-analytics research at UMD's MIND Lab, and two years teaching 900+ students.",
+    "UMD Computer Science grad (3.9 GPA, Business Analytics minor) with experience across backend systems, applied AI, and research: data work at Tyloones, AiVantage, and LeoTechnosoft, breathing-analytics research at UMD's MIND Lab, and two years teaching 900+ students.",
+    "Currently at JuumeAI, I own compliance and audit modules end to end (Go, PostgreSQL, React, Next.js) and build retrieval and evaluation systems on top of LLMs.",
     "Next up: high-performance computing. MPI, OpenMP, and a CUDA engine that runs 8x faster got me hooked on making code fast at scale.",
   ],
 };
