@@ -50,11 +50,13 @@ export const coreFocus = [
   "High-Performance Computing",
 ];
 
+// `lead` is shown larger as the opening line; keep `bio` paragraphs short.
 export const about = {
+  lead: "Full-stack engineer at JuumeAI, turning LLMs into features that hold up in production.",
   bio: [
-    "I graduated from the University of Maryland, College Park in May 2025 with a B.S. in Computer Science, a minor in Business Analytics, and a 3.9 GPA. I am now a full stack engineer at JuumeAI, where I own compliance and audit modules end-to-end across a Go and PostgreSQL backend and a React and Next.js front end, and where I build retrieval and evaluation systems on top of LLMs.",
-    "Before that I worked on backend and data problems at Tyloones, AiVantage, and LeoTechnosoft, researched breathing analytics at UMD's MIND Lab, and spent two years teaching programming languages and systems to over 900 students. I care most about shipping software that holds up in production.",
-    "Increasingly, I am drawn to high-performance computing. Parallel programming with MPI and OpenMP, and GPU work like a CUDA video-convolution engine that runs 8x faster than its baseline, showed me how much I enjoy making code fast at scale, and it is an area I am actively pursuing.",
+    "I own compliance and audit modules end to end, with Go and PostgreSQL on the back and React and Next.js on the front, and build the retrieval and evaluation systems behind our AI features.",
+    "UMD Computer Science grad (3.9 GPA, Business Analytics minor). Before JuumeAI: backend and data work at Tyloones, AiVantage, and LeoTechnosoft, breathing-analytics research at UMD's MIND Lab, and two years teaching 900+ students.",
+    "Next up: high-performance computing. MPI, OpenMP, and a CUDA engine that runs 8x faster got me hooked on making code fast at scale.",
   ],
 };
 

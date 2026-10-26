@@ -35,6 +35,7 @@ export default function AboutPage() {
         }
       >
         <div className={styles.bio}>
+          <p className={styles.lead}>{about.lead}</p>
           {about.bio.map((p) => (
             <p key={p.slice(0, 24)}>{p}</p>
           ))}
