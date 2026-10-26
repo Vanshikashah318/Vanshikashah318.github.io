@@ -1,0 +1,72 @@
+.section {
+  padding: 34px 0 8px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+/* Short orange bar running alongside the heading and subtitle. */
+.titleWrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding-left: 16px;
+}
+
+.titleWrap::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  bottom: 3px;
+  width: 3px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #ff7a18, #ff3c00 55%, #ffae00);
+}
+
+/* Matches the 28px brand name in the nav. */
+.title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--deep-green);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--soft-muted);
+  font-size: 13.5px;
+}
+
+.action {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--deep-green);
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.action:hover {
+  color: var(--rust);
+  border-color: rgba(195, 77, 28, 0.35);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .action {
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,21 @@
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.tag {
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.tag:hover {
+  transform: translateY(-2px);
+  border-color: rgba(195, 77, 28, 0.22);
+}

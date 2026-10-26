@@ -1,40 +1,53 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --bg: #f8f3ea;
+  --bg-soft: #fdf8f1;
+  --panel: rgba(255, 250, 243, 0.75);
+  --panel-strong: rgba(255, 250, 243, 0.9);
+  --deep-green: #102814;
+  --forest: #1d4d2d;
+  --sage: #5e7a60;
+  --rust: #c34d1c;
+  --fiery-orange: #ff5a1f;
+  --gold: #e2a93b;
+  --text: #1b1a17;
+  --muted: #5e594f;
+  --soft-muted: #857d70;
+  --border: rgba(64, 45, 19, 0.12);
+  --border-strong: rgba(64, 45, 19, 0.2);
+  --shadow: 0 18px 60px rgba(28, 24, 16, 0.10);
+  --shadow-soft: 0 10px 30px rgba(28, 24, 16, 0.08);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --max-width: 1180px;
+  --fire-gradient: linear-gradient(135deg, #ff7a18, #ff3c00, #ffae00);
+  --serif: var(--font-serif), 'Cormorant Garamond', serif;
+  --sans: var(--font-sans), 'DM Sans', sans-serif;
+  --mono: var(--font-mono), 'IBM Plex Mono', Consolas, monospace;
 }
 
 html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  /* No `scroll-behavior: smooth` here: in Next.js 16 it animates the scroll-to-top
+     during page navigation, which can stop partway down the new page. */
+  /* Keep anchored section headings clear of the sticky nav. */
+  scroll-padding-top: 90px;
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 140, 0, 0.08), transparent 28%),
+    radial-gradient(circle at 80% 10%, rgba(16, 40, 20, 0.08), transparent 28%),
+    linear-gradient(180deg, #fcf7ef 0%, #f6efe4 50%, #f9f3ea 100%);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.7;
+  min-height: 100vh;
 }
 
 a {
@@ -42,8 +55,32 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--fiery-orange);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(var(--max-width), calc(100% - 40px));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 760px) {
+  .container {
+    width: min(var(--max-width), calc(100% - 24px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    color-scheme: dark;
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
   }
 }

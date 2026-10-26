@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vanshika Shah — Portfolio
 
-## Getting Started
+Personal portfolio site, built with Next.js and hosted on GitHub Pages.
 
-First, run the development server:
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install     # first time only
+npm run dev     # http://localhost:3000, reloads as you edit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Update content
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+All text, links, jobs, projects, skills and certifications live in
+[`data/portfolio.js`](data/portfolio.js). Edit that file; the components pick up the changes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Headshot:** `public/images/vanshika-headshot.webp`.
+- **Résumé:** `resumeUrl` takes any link (currently Google Drive), or add `public/resume.pdf` and use `"/resume.pdf"`.
+- **Phone number:** set `phone` to show it in the hero.
+- **New project:** add an entry to `projects`, with a 16:9 cover image in `public/images/projects/`.
+  `featured: true` also shows it on the home page; `href` adds a "View on GitHub" link.
+- **New job:** add an entry to `experience` with `group: "industry"` or `"academic"`.
 
-## Learn More
+## Pages
 
-To learn more about Next.js, take a look at the following resources:
+| URL            | Contents                                                     |
+| -------------- | ------------------------------------------------------------ |
+| `/`            | Hero and featured projects                                   |
+| `/about/`      | Bio, education & awards, skills, certifications, coursework  |
+| `/experience/` | Timeline of industry and research/teaching roles             |
+| `/projects/`   | All projects as image cards                                  |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The nav bar, contact band and footer are shared by every page (`app/layout.js`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project layout
 
-## Deploy on Vercel
+```
+app/            one folder per page, plus the shared layout, styles, favicon, link-preview image
+components/     page sections (Hero, Timeline, ProjectCard, Education, ...)
+components/ui/  shared pieces: PageHeader, Section, Button, Tag, StatPanel, scroll Reveal
+data/           site content
+public/         static files served as-is (headshot, project covers)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Pushing to `main` builds the site and publishes it via
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml).
+
+One-time setup: create a GitHub repo named `vanshikashah318.github.io`, push this project to it,
+then in the repo go to **Settings → Pages → Source** and choose **GitHub Actions**.
+
+To check the production build locally: `npm run build` (outputs static files to `out/`).

@@ -1,0 +1,39 @@
+.shell {
+  position: relative;
+  /* `clip` (unlike `hidden`) hides the overflowing blobs without creating a
+     scroll container, so the sticky nav still sticks to the viewport. */
+  overflow: clip;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob1 {
+  width: 260px;
+  height: 260px;
+  background: rgba(255, 90, 31, 0.18);
+  top: 120px;
+  left: -60px;
+}
+
+.blob2 {
+  width: 280px;
+  height: 280px;
+  background: rgba(226, 169, 59, 0.18);
+  top: 520px;
+  right: -70px;
+}
+
+.blob3 {
+  width: 260px;
+  height: 260px;
+  background: rgba(29, 77, 45, 0.12);
+  bottom: 160px;
+  left: 10%;
+}

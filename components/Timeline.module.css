@@ -1,0 +1,277 @@
+/* --rail-x is the rail's centre line; the dots are centred on it.
+   --progress (0 to 1) is set from JS as the reader scrolls; it defaults to 1 (fully filled). */
+.wrap {
+  --rail-x: 171px;
+  --rail-top: 20px;
+  --rail-bottom: 20px;
+  position: relative;
+}
+
+/* Faint base rail. */
+.wrap::before,
+.wrap::after {
+  content: "";
+  position: absolute;
+  top: var(--rail-top);
+  bottom: var(--rail-bottom);
+  left: calc(var(--rail-x) - 1px);
+  width: 2px;
+  border-radius: 2px;
+}
+
+.wrap::before {
+  background: rgba(64, 45, 19, 0.12);
+}
+
+/* Orange fill that grows down the rail with scroll progress. */
+.wrap::after {
+  background: linear-gradient(180deg, #ffae00, #ff5a1f 45%, #c34d1c);
+  box-shadow: 0 0 12px rgba(255, 90, 31, 0.45);
+  transform-origin: top;
+  transform: scaleY(var(--progress, 1));
+}
+
+/* Glowing head riding the leading edge of the fill. Only shown while animating. */
+.tip {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: calc(var(--rail-x) - 5px);
+  top: calc(var(--rail-top) + (100% - var(--rail-top) - var(--rail-bottom)) * var(--progress, 1) - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff3e0;
+  box-shadow: 0 0 0 3px rgba(255, 90, 31, 0.55), 0 0 18px 4px rgba(255, 122, 24, 0.6);
+  pointer-events: none;
+}
+
+.wrap[data-animated] .tip {
+  display: block;
+}
+
+.timeline {
+  list-style: none;
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 44px;
+}
+
+.when {
+  padding-top: 26px;
+  text-align: right;
+}
+
+.dates {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--soft-muted);
+  text-transform: uppercase;
+  transition: color 0.4s ease;
+}
+
+.dot {
+  position: absolute;
+  z-index: 2;
+  left: calc(var(--rail-x) - 7px);
+  top: 28px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 3px solid var(--fiery-orange);
+  transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dotCurrent {
+  box-shadow: 0 0 0 5px rgba(255, 90, 31, 0.15);
+}
+
+.card {
+  background: linear-gradient(145deg, rgba(255, 251, 245, 0.82), rgba(255, 247, 239, 0.96));
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow-soft);
+  /* `translate` (not `transform`) drives the slide-in, so it doesn't fight the hover lift. */
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease,
+    opacity 0.6s ease, translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Scroll animation states (only once JS has marked the timeline as animated) ---- */
+
+.wrap[data-animated] .dot {
+  border-color: rgba(64, 45, 19, 0.25);
+  box-shadow: none;
+}
+
+.wrap[data-animated] .item[data-reached] .dot {
+  border-color: var(--fiery-orange);
+  background: #fff3e0;
+  transform: scale(1.25);
+  box-shadow: 0 0 0 6px rgba(255, 90, 31, 0.14);
+}
+
+.wrap[data-animated] .item[data-reached] .dates {
+  color: var(--rust);
+}
+
+.wrap[data-animated] .item:not([data-seen]) .card {
+  opacity: 0;
+  translate: 40px 0;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 36px rgba(28, 24, 16, 0.1);
+  border-color: rgba(195, 77, 28, 0.18);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.role {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.company {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rust);
+}
+
+.location {
+  font-weight: 500;
+  color: var(--soft-muted);
+  letter-spacing: 0.03em;
+}
+
+.now {
+  flex-shrink: 0;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 90, 31, 0.1);
+  border: 1px solid rgba(255, 90, 31, 0.3);
+  color: var(--rust);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Shown under the title on narrow screens, where the left date column is hidden. */
+.datesInline {
+  display: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--soft-muted);
+  margin-top: 6px;
+}
+
+.bullets {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.bullets li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.bullets li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--fiery-orange);
+  font-size: 13px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tech {
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: rgba(16, 40, 20, 0.05);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.link {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rust);
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+  .wrap {
+    --rail-x: 7px;
+  }
+
+  .item {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-left: 30px;
+  }
+
+  .when {
+    display: none;
+  }
+
+  .wrap[data-animated] .item:not([data-seen]) .card {
+    translate: 0 24px;
+  }
+
+  .datesInline {
+    display: block;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .role {
+    font-size: 21px;
+  }
+
+  .link {
+    margin-left: 0;
+  }
+}

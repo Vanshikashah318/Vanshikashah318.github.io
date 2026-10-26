@@ -1,0 +1,81 @@
+.footer {
+  position: relative;
+  z-index: 2;
+  padding: 44px 0 36px;
+}
+
+/* A slim invitation to the contact page, replacing the old full-width banner. */
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 28px;
+  border-radius: 24px;
+  border: 1px solid var(--border-strong);
+  background: rgba(255, 255, 255, 0.55);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta:hover {
+  background: #fff;
+  border-color: rgba(195, 77, 28, 0.3);
+  transform: translateY(-2px);
+}
+
+.ctaKicker {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--soft-muted);
+  margin-bottom: 4px;
+}
+
+.ctaTitle {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.6vw, 26px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--deep-green);
+}
+
+.ctaTitle em {
+  font-style: italic;
+  color: var(--rust);
+}
+
+.ctaArrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--deep-green), var(--forest));
+  color: #ffd67f;
+  transition: transform 0.3s ease;
+}
+
+.ctaArrow svg {
+  width: 22px;
+  height: 22px;
+}
+
+.cta:hover .ctaArrow {
+  transform: rotate(45deg);
+}
+
+.note {
+  margin-top: 28px;
+  text-align: center;
+  color: var(--soft-muted);
+  font-size: 13px;
+}
+
+.note a:hover {
+  color: var(--rust);
+}
