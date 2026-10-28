@@ -7,7 +7,7 @@
 .card {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(155deg, rgba(255, 251, 245, 0.84), rgba(255, 247, 239, 0.98));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-left: 4px solid var(--gold);
   border-radius: 22px;
@@ -43,7 +43,7 @@
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(226, 169, 59, 0.2), rgba(255, 122, 24, 0.14));
   border: 1px solid rgba(226, 169, 59, 0.45);
-  color: #9a5b0c;
+  color: var(--honors-fg);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -55,7 +55,7 @@
   font-size: 22px;
   font-weight: 600;
   line-height: 1.05;
-  color: var(--deep-green);
+  color: var(--heading);
   margin-bottom: 12px;
 }
 

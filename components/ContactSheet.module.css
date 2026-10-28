@@ -150,7 +150,7 @@
   margin: 14px;
   padding: 30px;
   border-radius: 26px;
-  background: linear-gradient(160deg, #fffaf2, #f8efe2);
+  background: var(--sheet-bg);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -159,7 +159,7 @@
 .primary {
   padding: 24px;
   border-radius: 22px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
 }
@@ -200,7 +200,7 @@
   font-size: clamp(22px, 2.4vw, 30px);
   font-weight: 600;
   line-height: 1.15;
-  color: var(--deep-green);
+  color: var(--heading);
   overflow-wrap: anywhere;
 }
 
@@ -234,10 +234,16 @@
   color: #fff8ef;
 }
 
+/* Dark mode: lift the green button off the dark contact sheet. */
+:global([data-theme="dark"]) .send {
+  background: linear-gradient(135deg, #2c6b3f, #1d4d2d);
+  box-shadow: 0 0 0 1px rgba(143, 208, 160, 0.28);
+}
+
 .copy {
   background: transparent;
   border: 1px solid var(--border-strong);
-  color: var(--deep-green);
+  color: var(--heading);
   min-width: 140px;
 }
 
@@ -262,14 +268,14 @@
   gap: 16px;
   padding: 14px 18px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.7);
+  background: var(--chip-bg);
   border: 1px solid var(--border);
   transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .row:hover {
   transform: translateX(4px);
-  background: #fff;
+  background: var(--surface);
   border-color: rgba(195, 77, 28, 0.25);
 }
 
@@ -281,8 +287,8 @@
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  background: rgba(16, 40, 20, 0.06);
-  color: var(--forest);
+  background: var(--tint);
+  color: var(--accent-green);
   transition: background 0.25s ease, color 0.25s ease;
 }
 
@@ -345,7 +351,7 @@
 .interest {
   padding: 24px;
   border-radius: 22px;
-  background: linear-gradient(155deg, rgba(255, 251, 245, 0.84), rgba(255, 247, 239, 0.98));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-soft);
 }
@@ -367,7 +373,7 @@
   font-size: 21px;
   font-weight: 600;
   line-height: 1.1;
-  color: var(--deep-green);
+  color: var(--heading);
   margin-bottom: 8px;
 }
 

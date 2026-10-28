@@ -1,5 +1,5 @@
 .card {
-  background: linear-gradient(145deg, rgba(255, 251, 245, 0.82), rgba(255, 247, 237, 0.95));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: 28px;
@@ -20,19 +20,19 @@
   width: fit-content;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(16, 40, 20, 0.06);
-  border: 1px solid rgba(16, 40, 20, 0.08);
+  background: var(--tint);
+  border: 1px solid var(--tint);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--forest);
+  color: var(--accent-green);
 }
 
 .degree {
   font-family: var(--serif);
   font-size: 26px;
-  color: var(--deep-green);
+  color: var(--heading);
   font-weight: 600;
   line-height: 1.1;
 }
@@ -65,7 +65,7 @@
 .tag {
   padding: 5px 11px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--chip-bg);
   border: 1px solid var(--border);
   color: var(--muted);
   font-size: 12.5px;
@@ -81,7 +81,7 @@
 }
 
 .earlier a {
-  color: var(--forest);
+  color: var(--accent-green);
   font-weight: 600;
 }
 
@@ -124,7 +124,7 @@
   align-items: flex-start;
   padding: 16px 18px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.65);
+  background: var(--chip-bg);
   border: 1px solid var(--border);
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
@@ -150,7 +150,7 @@
 .awardName {
   display: block;
   font-weight: 700;
-  color: var(--deep-green);
+  color: var(--heading);
   font-size: 15px;
   line-height: 1.3;
 }

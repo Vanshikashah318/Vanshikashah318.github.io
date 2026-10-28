@@ -47,10 +47,21 @@ export const viewport = {
   themeColor: "#f8f3ea",
 };
 
+// Runs before first paint: applies the saved theme (light by default) so a reader who chose
+// dark mode never sees a flash of the light page. Kept tiny and dependency-free.
+const themeScript = `(function(){try{var t=localStorage.getItem("theme");document.documentElement.dataset.theme=t==="dark"?"dark":"light"}catch(e){document.documentElement.dataset.theme="light"}})()`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${dmSans.variable} ${plexMono.variable}`}>
+    // suppressHydrationWarning: data-theme is set by themeScript before React hydrates.
+    <html
+      lang="en"
+      data-theme="light"
+      className={`${cormorant.variable} ${dmSans.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <div className={styles.shell}>
           <div className={`${styles.blob} ${styles.blob1}`} aria-hidden="true" />
           <div className={`${styles.blob} ${styles.blob2}`} aria-hidden="true" />

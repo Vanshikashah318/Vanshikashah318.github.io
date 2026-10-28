@@ -1,0 +1,46 @@
+.toggle {
+  position: relative;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--chip-bg);
+  color: var(--heading);
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.toggle:hover {
+  color: var(--rust);
+  border-color: rgba(195, 77, 28, 0.35);
+  transform: rotate(-12deg);
+}
+
+.moon,
+.sun {
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.3s ease, transform 0.4s ease;
+}
+
+/* Both icons share the same spot; the inactive one fades and turns away. */
+.sun {
+  position: absolute;
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.6);
+}
+
+:global([data-theme="dark"]) .moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.6);
+}
+
+:global([data-theme="dark"]) .sun {
+  opacity: 1;
+  transform: none;
+  color: #ffd67f;
+}

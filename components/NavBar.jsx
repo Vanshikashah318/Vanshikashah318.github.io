@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navLinks, profile } from "@/data/portfolio";
+import ThemeToggle from "./ThemeToggle";
 import styles from "./NavBar.module.css";
 
 const normalize = (path) => (path.endsWith("/") ? path : `${path}/`);
@@ -36,41 +37,45 @@ export default function NavBar() {
           <span className={styles.brandSub}>{profile.tagline}</span>
         </Link>
 
-        <button
-          type="button"
-          className={styles.menuButton}
-          aria-expanded={open}
-          aria-controls="site-nav"
-          aria-label={open ? "Close menu" : "Open menu"}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span className={`${styles.menuIcon} ${open ? styles.menuIconOpen : ""}`} />
-        </button>
+        <div className={styles.right}>
+          <nav id="site-nav" className={`${styles.links} ${open ? styles.linksOpen : ""}`}>
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={close}
+                  className={active ? styles.active : undefined}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            <Link
+              className={`${styles.cta} ${pathname === "/contact/" ? styles.ctaActive : ""}`}
+              href="/contact/"
+              onClick={close}
+              aria-current={pathname === "/contact/" ? "page" : undefined}
+            >
+              Get in Touch
+            </Link>
+          </nav>
 
-        <nav id="site-nav" className={`${styles.links} ${open ? styles.linksOpen : ""}`}>
-          {navLinks.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={close}
-                className={active ? styles.active : undefined}
-                aria-current={active ? "page" : undefined}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <Link
-            className={`${styles.cta} ${pathname === "/contact/" ? styles.ctaActive : ""}`}
-            href="/contact/"
-            onClick={close}
-            aria-current={pathname === "/contact/" ? "page" : undefined}
+          <ThemeToggle />
+
+          <button
+            type="button"
+            className={styles.menuButton}
+            aria-expanded={open}
+            aria-controls="site-nav"
+            aria-label={open ? "Close menu" : "Open menu"}
+            onClick={() => setOpen((v) => !v)}
           >
-            Get in Touch
-          </Link>
-        </nav>
+            <span className={`${styles.menuIcon} ${open ? styles.menuIconOpen : ""}`} />
+          </button>
+        </div>
       </div>
     </header>
   );

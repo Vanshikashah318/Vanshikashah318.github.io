@@ -20,7 +20,7 @@
 }
 
 .wrap::before {
-  background: rgba(64, 45, 19, 0.12);
+  background: var(--rail);
 }
 
 /* Orange fill that grows down the rail with scroll progress. */
@@ -96,7 +96,7 @@
 }
 
 .card {
-  background: linear-gradient(145deg, rgba(255, 251, 245, 0.82), rgba(255, 247, 239, 0.96));
+  background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 22px 26px;
@@ -109,7 +109,7 @@
 /* ---- Scroll animation states (only once JS has marked the timeline as animated) ---- */
 
 .wrap[data-animated] .dot {
-  border-color: rgba(64, 45, 19, 0.25);
+  border-color: var(--dot-idle);
   box-shadow: none;
 }
 
@@ -221,7 +221,7 @@
 .tech {
   padding: 4px 10px;
   border-radius: 8px;
-  background: rgba(16, 40, 20, 0.05);
+  background: var(--tint);
   border: 1px solid var(--border);
   color: var(--muted);
   font-size: 12.5px;

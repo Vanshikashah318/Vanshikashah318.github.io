@@ -4,8 +4,9 @@
   z-index: 50;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  background: rgba(248, 243, 234, 0.78);
-  border-bottom: 1px solid rgba(90, 67, 34, 0.08);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s ease;
 }
 
 .nav {
@@ -27,7 +28,7 @@
   font-size: 28px;
   font-weight: 600;
   letter-spacing: 0.01em;
-  color: var(--deep-green);
+  color: var(--heading);
   line-height: 1;
 }
 
@@ -36,6 +37,13 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--soft-muted);
+}
+
+/* Links, theme toggle and (on phones) the menu button, kept together on the right. */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 
 .links {
@@ -58,7 +66,7 @@
 }
 
 .links .active {
-  color: var(--deep-green);
+  color: var(--heading);
   font-weight: 600;
   box-shadow: inset 0 -2px 0 var(--fiery-orange);
 }
@@ -72,6 +80,12 @@
   font-weight: 600;
   box-shadow: var(--shadow-soft);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Dark mode: lift the green button off the near-black bar. */
+:global([data-theme="dark"]) .links .cta {
+  background: linear-gradient(135deg, #2c6b3f, #1d4d2d);
+  box-shadow: 0 0 0 1px rgba(143, 208, 160, 0.28), var(--shadow-soft);
 }
 
 .links .ctaActive {
@@ -98,8 +112,13 @@
   }
 
   .brandSub {
-    font-size: 9.5px;
-    letter-spacing: 0.14em;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .right {
+    gap: 8px;
   }
 
   .menuButton {
@@ -111,7 +130,7 @@
     flex-shrink: 0;
     border-radius: 50%;
     border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--chip-bg);
     cursor: pointer;
   }
 
@@ -123,7 +142,7 @@
     width: 18px;
     height: 2px;
     border-radius: 2px;
-    background: var(--deep-green);
+    background: var(--heading);
     transition: transform 0.25s ease, background 0.25s ease;
   }
 
