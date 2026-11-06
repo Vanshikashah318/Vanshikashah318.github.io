@@ -196,6 +196,19 @@ export const experience = [
 // `highlights` render as orange chips, `tech` as grey tags. Add `href` for a GitHub or demo link.
 export const projects = [
   {
+    slug: "elt-pipeline",
+    title: "ELT Data Pipeline",
+    category: "Data Engineering",
+    date: "Oct 2026",
+    cover: "/images/projects/elt-pipeline.svg",
+    description:
+      "Transforms 7.5M+ Snowflake TPC-H records into an analytics-ready orders fact table through layered dbt models, orchestrated daily in Apache Airflow with Astronomer Cosmos and validated by 8 data-quality tests.",
+    highlights: ["7.5M+ records", "8 dbt tests", "Daily DAG"],
+    tech: ["Snowflake", "dbt", "Apache Airflow", "Docker", "SQL"],
+    href: "https://github.com/Vanshikashah318/dbt-snowflake-airflow-pipeline",
+    featured: true,
+  },
+  {
     slug: "gpu-convolution",
     title: "GPU-Accelerated Video Convolution Engine",
     category: "Systems · GPU",
@@ -229,7 +242,6 @@ export const projects = [
       "Analyzes transaction history from CSV files and uses the OpenAI API to deliver personalized financial recommendations, on a serverless AWS Lambda backend with S3 storage.",
     highlights: ["Serverless", "LLM insights"],
     tech: ["Python", "AWS Lambda", "AWS S3", "OpenAI API"],
-    featured: true,
   },
   {
     slug: "image-classification",
